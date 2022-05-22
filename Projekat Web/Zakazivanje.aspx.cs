@@ -28,11 +28,12 @@ namespace Projekat_Web
         {
             Web Logika = new Web();
             DataSet termini = new DataSet();
-            
+            string[] arg = (string[])Session["argumenti"];
+            string prodavnica= arg[1];
             DataSet vremena = new DataSet();
             vremena.Clear();
             termini.Clear();
-            termini = Logika.Termini();
+            termini = Logika.Termini(prodavnica);
             vremena = Logika.Vremena();
             
 

@@ -82,13 +82,13 @@ namespace Projekat_Web
             adapter.Fill(set);
             return set;
         }
-        public DataSet Termini()
+        public DataSet Termini(string prodavnica)
         {
             komanda.Connection = veza;
             komanda.CommandType = CommandType.StoredProcedure;
             komanda.CommandText = "SviTermini";
             komanda.Parameters.Clear();
-
+            komanda.Parameters.Add(new SqlParameter("@prodavnica", SqlDbType.VarChar, 50, ParameterDirection.Input, false, 0, 0, "", DataRowVersion.Current, prodavnica));
             veza.Open();
             komanda.ExecuteNonQuery();
             veza.Close();
